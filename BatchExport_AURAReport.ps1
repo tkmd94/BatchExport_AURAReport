@@ -1,4 +1,4 @@
-#指定した期間の"照射録_位置照合（日報）"を出力するスクリプト
+#指定した期間の"DailyExposureReport"を出力するスクリプト
 
 # 開始日付の指定（★★ここで日付を指定する）　
 $startDateText="20221212"
@@ -13,12 +13,14 @@ $endDate = [DateTime]::ParseExact($endDateText,"yyyyMMdd",$null)
 # 期間計算
 $dt=($endDate - $startDate).Days
 
+#レポート名の定義
+$ReportName="DailyExposureReport"
 # レポートURLの定義
-$reportURL="https://ariareport:56300/Reportserver/Pages/Report.aspx?%2f%e7%85%a7%e5%b0%84%e9%8c%b2_%e4%bd%8d%e7%bd%ae%e7%85%a7%e5%90%88%ef%bc%88%e6%97%a5%e5%a0%b1%ef%bc%89"
+$reportURL="https://ariareport:56300/Reportserver/Pages/Report.aspx?%2f"+$ReportName
 # 出力フォルダの定義
-$exportPath="\\ariasvr\va_transfer\mlc\--- 照射録 ---\照射録_位置照合（日報）\"
+$exportPath="C:\Temp\"
 # 出力ファイル名の定義
-$newFileBaseName="照射録_位置照合（日報）"
+$newFileBaseName="DailyExposureReport"
 
 for ($i =0;$i -le $dt ; $i++){
     # 日付計算
